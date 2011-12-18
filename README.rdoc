@@ -1,0 +1,7 @@
+== Welcome to nexp-js!
+
+nexp-js is a JavaScript library to visualize dynamic networks. It uses Raphael to draw beautiful graphics. See the file example.html for a small example on how to use nexp-js.
+
+== License
+
+nexp-js is released under the Simplified BSD License, see the LICENSE file.

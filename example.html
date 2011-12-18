@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+<head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<title>nexp-js example</title>
+<script src="raphael.js" ></script>
+<script src="nexp.js" ></script>
+</head>
+
+<body>
+<div id="network" style="width: 300px; height: 200px; border: 1px solid #666"></div>
+<script>
+    network = new Network("network", 300, 200, {
+		showNavigationControls: true,
+		controlColor: '#333',
+		mouseWheelZoom: true,
+		highlightHover: true,
+		highlightNeighbors: true,
+		totalWidth: 300,
+		totalHeight: 200,
+		center: [0, 0],
+		zoom: 1,
+		defaultZoom: 1,
+		nodesSelectable: true,
+		maxNodeSelection: 3
+	});
+    network.bind("view", function(xmin, xmax, ymin, ymax, nodeSelection, edgeSelection,
+        selectionChanged, nodes, edges, finish) {
+            // add nodes and edges
+            nodes.push([0, 0.0, 0.0, {
+                normal: {
+                    r: 3,
+                    fill: "red",
+                    caption: "Hello",
+                    fontColor: "red"
+                },
+                highlight: {
+                    fill: "green"
+                }
+            }]);
+            nodes.push([1, 0.8, 0.7, {
+                normal: {
+                    r: 5,
+                    fill: "blue",
+                    caption: "world",
+                    fontColor: "blue"
+                },
+                highlight: {
+                    fill: "#333"
+                }
+            }]);
+            nodes.push([2, -0.5, 0.5, {
+                normal: {
+                    caption: "!"
+                }
+            }])
+            edges.push([0, 1, '>', {
+                normal: {
+                    stroke: "orange",
+                    strokeWidth: 3
+                }
+            }]);
+            edges.push([1, 2, '-']);
+            // call finish when done
+            // (this can be helpful when doing asynchronous AJAX calls, for instance)
+            finish();
+	    });
+    network.refresh();
+</script>
+</body>
+
+</html>

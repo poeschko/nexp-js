@@ -122,7 +122,6 @@ function Highlightable() {
 	}
 	
 	this.useProperties = function(properties) {
-		//alert(this.id);
 		var that = this;
 		var currentProperties = this.currentProperties;
 		function setElementAttr(element, attr, value) {
@@ -233,6 +232,7 @@ function Highlightable() {
 	}
 	
 	this.setProperties = function(properties, use) {
+		properties = properties || {};
 		this.properties = {
 			normal: properties.normal || {},
 			highlight: properties.highlight || {},
@@ -908,7 +908,7 @@ function Network(element, screenWidth, screenHeight, options) {
 	  	this.element.addEventListener('DOMMouseScroll', onMouseWheel, false);
   }
   
-  $(window).keydown(function(event) {
+  window.addEventListener('keydown', function(event) {
   	switch (event.which) {
   	case 107:	// +
   	case 187:	// Chrome
